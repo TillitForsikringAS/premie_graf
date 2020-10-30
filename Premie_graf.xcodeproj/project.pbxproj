@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99E3F922A60115CDC25CEBB7 /* Pods_Premie_graf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9EC5374D136ABA7DCE90B92 /* Pods_Premie_graf.framework */; };
 		CC3D8E492546BEC20008DED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D8E482546BEC10008DED9 /* AppDelegate.swift */; };
 		CC3D8E4B2546BEC20008DED9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D8E4A2546BEC20008DED9 /* SceneDelegate.swift */; };
 		CC3D8E4D2546BEC20008DED9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3D8E4C2546BEC20008DED9 /* ViewController.swift */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31A7213DEDD0E6D419384E65 /* Pods-Premie_graf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Premie_graf.release.xcconfig"; path = "Target Support Files/Pods-Premie_graf/Pods-Premie_graf.release.xcconfig"; sourceTree = "<group>"; };
+		A9EC5374D136ABA7DCE90B92 /* Pods_Premie_graf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Premie_graf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B23086DA056C9600549D03B3 /* Pods-Premie_graf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Premie_graf.debug.xcconfig"; path = "Target Support Files/Pods-Premie_graf/Pods-Premie_graf.debug.xcconfig"; sourceTree = "<group>"; };
 		CC3D8E452546BEC10008DED9 /* Premie_graf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Premie_graf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC3D8E482546BEC10008DED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC3D8E4A2546BEC20008DED9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,17 +35,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99E3F922A60115CDC25CEBB7 /* Pods_Premie_graf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		851C138C690451D492257EB2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A9EC5374D136ABA7DCE90B92 /* Pods_Premie_graf.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9FE5995ACD7FFDC86DBC2E0B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B23086DA056C9600549D03B3 /* Pods-Premie_graf.debug.xcconfig */,
+				31A7213DEDD0E6D419384E65 /* Pods-Premie_graf.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CC3D8E3C2546BEC10008DED9 = {
 			isa = PBXGroup;
 			children = (
 				CC3D8E472546BEC10008DED9 /* Premie_graf */,
 				CC3D8E462546BEC10008DED9 /* Products */,
+				9FE5995ACD7FFDC86DBC2E0B /* Pods */,
+				851C138C690451D492257EB2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC3D8E592546BEC50008DED9 /* Build configuration list for PBXNativeTarget "Premie_graf" */;
 			buildPhases = (
+				D1EDC9FD649AAA665C8A083A /* [CP] Check Pods Manifest.lock */,
 				CC3D8E412546BEC10008DED9 /* Sources */,
 				CC3D8E422546BEC10008DED9 /* Frameworks */,
 				CC3D8E432546BEC10008DED9 /* Resources */,
+				660A769DFB235D8C94700410 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		660A769DFB235D8C94700410 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Premie_graf/Pods-Premie_graf-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Premie_graf/Pods-Premie_graf-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Premie_graf/Pods-Premie_graf-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1EDC9FD649AAA665C8A083A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Premie_graf-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CC3D8E412546BEC10008DED9 /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		CC3D8E5A2546BEC50008DED9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B23086DA056C9600549D03B3 /* Pods-Premie_graf.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +370,7 @@
 		};
 		CC3D8E5B2546BEC50008DED9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31A7213DEDD0E6D419384E65 /* Pods-Premie_graf.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
