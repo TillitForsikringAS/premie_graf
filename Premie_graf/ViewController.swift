@@ -29,7 +29,7 @@ class ViewController: UIViewController {
                 self.chartView.alpha = 0
                 self.chartView2.alpha = 1
             })
-        }
+        } 
     }
     
     // Premium history from insurance object (https://www.tillit.eu/api/v1/insuranceobjects/iPhone%20XS%20Max/)
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     }
     
     let premium_set: [Premium]  = [
-        Premium(id: 85, premium_base: 1800, created: "2020-10-29T12:28:09.793201Z"),
+        Premium(id: 85, premium_base: 1600, created: "2020-10-29T12:28:09.793201Z"),
         Premium(id: 85, premium_base: 1500, created: "2020-09-28T12:28:09.793201Z"),
         Premium(id: 85, premium_base: 1900, created: "2020-08-20T12:28:09.793201Z"),
     ]
@@ -67,7 +67,7 @@ class ViewController: UIViewController {
         // let currentPremiumDate = (formatter.date(from: premium_set.first!.created))!.timeIntervalSince1970*1000
         let period_start = Date().timeIntervalSince1970*1000
         
-        let previous_60_days = period_start - (60 * 24 * 60 * 60 * 1000)
+        let previous_60_days = period_start - (60 * 86400000)
         let previous_30_days = period_start - (30 * 24 * 60 * 60 * 1000)
         let next_30_days = period_start + (30 * 24 * 60 * 60 * 1000)
         let next_60_days = period_start + (60 * 24 * 60 * 60 * 1000)
@@ -107,10 +107,9 @@ class ViewController: UIViewController {
             }
         }
         
-        print("60 days ago: \(premium_60_days_ago) (19) \n30 days ago: \(premium_30_days_ago) (15)\nCurrent: \(premium_current) (18) \nNext low: \(premium_next_low) (14) \nNext high: \(premium_next_high) (22)")
         
-        self.chartView = HIChartView(frame:  CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 300))
-        self.chartView2 = HIChartView(frame:  CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 300))
+        self.chartView = HIChartView(frame:  CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 400))
+        self.chartView2 = HIChartView(frame:  CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 400))
         
         self.chartView.alpha = 0
         self.chartView2.alpha = 0

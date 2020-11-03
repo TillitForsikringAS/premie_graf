@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		CC3D8E502546BEC20008DED9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC3D8E4E2546BEC20008DED9 /* Main.storyboard */; };
 		CC3D8E522546BEC50008DED9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC3D8E512546BEC50008DED9 /* Assets.xcassets */; };
 		CC3D8E552546BEC50008DED9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC3D8E532546BEC50008DED9 /* LaunchScreen.storyboard */; };
+		CC45A8FB254C488D000D944A /* ForsikretGraf.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45A8FA254C488D000D944A /* ForsikretGraf.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CC3D8E512546BEC50008DED9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC3D8E542546BEC50008DED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC3D8E562546BEC50008DED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC45A8FA254C488D000D944A /* ForsikretGraf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForsikretGraf.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +58,6 @@
 				B23086DA056C9600549D03B3 /* Pods-Premie_graf.debug.xcconfig */,
 				31A7213DEDD0E6D419384E65 /* Pods-Premie_graf.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -88,6 +89,7 @@
 				CC3D8E512546BEC50008DED9 /* Assets.xcassets */,
 				CC3D8E532546BEC50008DED9 /* LaunchScreen.storyboard */,
 				CC3D8E562546BEC50008DED9 /* Info.plist */,
+				CC45A8FA254C488D000D944A /* ForsikretGraf.swift */,
 			);
 			path = Premie_graf;
 			sourceTree = "<group>";
@@ -210,6 +212,7 @@
 				CC3D8E4D2546BEC20008DED9 /* ViewController.swift in Sources */,
 				CC3D8E492546BEC20008DED9 /* AppDelegate.swift in Sources */,
 				CC3D8E4B2546BEC20008DED9 /* SceneDelegate.swift in Sources */,
+				CC45A8FB254C488D000D944A /* ForsikretGraf.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
