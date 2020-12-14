@@ -1,11 +1,12 @@
 /**
-* (c) 2009-2018 Highsoft AS
+* (c) 2009-2020 Highsoft AS
 *
 * License: www.highcharts.com/license
 * For commercial usage, a valid license is required. To purchase a license for Highcharts iOS, please see our website: https://shop.highsoft.com/
 * In case of questions, please contact sales@highsoft.com
 */
 
+#import "HIPoints.h"
 #import "HIPoint.h"
 #import "HIColor.h"
 
@@ -16,9 +17,17 @@ An array of shapes for the annotation. For options that apply to multiple shapes
 @interface HIShapes: HIChartsJSONSerializable
 
 /**
+The URL for an image to use as the annotation shape. Note, type has to be set to `'image'`.
+
+**Try it**
+
+* [Define a marker image url for annotations](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/annotations/shape-src/)
+*/
+@property(nonatomic, readwrite) NSString *src;
+/**
 An array of points for the shape. This option is available for shapes which can use multiple points such as path. A point can be either a point object or a point's id.
 */
-@property(nonatomic, readwrite) NSArray *points;
+@property(nonatomic, readwrite) NSArray <HIPoints *> *points;
 /**
 Id of the marker which will be drawn at the final vertex of the path. Custom markers can be defined in defs property.
 
@@ -39,6 +48,14 @@ Id of the marker which will be drawn at the first vertex of the path. Custom mar
 This option defines the point to which the shape will be connected. It can be either the point which exists in the series - it is referenced by the point's id - or a new point with defined x, y properties and optionally axes.
 */
 @property(nonatomic, readwrite) HIPoint *point;
+/**
+Name of the dash style to use for the shape's stroke.
+
+**Try it**
+
+* [Possible values demonstrated](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/series-dashstyle-all/)
+*/
+@property(nonatomic, readwrite) NSString *dashStyle;
 /**
 The pixel stroke width of the shape.
 
@@ -80,9 +97,13 @@ The radius of the shape.
 */
 @property(nonatomic, readwrite) NSNumber *r;
 /**
+Defines additional snapping area around an annotation making this annotation to focus. Defined in pixels.
+*/
+@property(nonatomic, readwrite) NSNumber *snap;
+/**
 The type of the shape, e.g. circle or rectangle.
 
-**Defaults to** `'rect'`.
+**Defaults to** `rect`.
 
 **Try it**
 

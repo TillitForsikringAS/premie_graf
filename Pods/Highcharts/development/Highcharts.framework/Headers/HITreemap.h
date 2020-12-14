@@ -1,5 +1,5 @@
 /**
-* (c) 2009-2018 Highsoft AS
+* (c) 2009-2020 Highsoft AS
 *
 * License: www.highcharts.com/license
 * For commercial usage, a valid license is required. To purchase a license for Highcharts iOS, please see our website: https://shop.highsoft.com/
@@ -8,22 +8,23 @@
 
 #import "HISeries.h"
 #import "HILevels.h"
-#import "HIDrillUpButton.h"
+#import "HITraverseUpButton.h"
+#import "HICluster.h"
 #import "HIColor.h"
 
 
 /**
-A `treemap` series. If the `type` option is not specified, it is inherited from `chart.type`.
-
-Configuration options for the series are given in three levels:
+ A `treemap` series. If the `type` option is not specified, it is inherited from `chart.type`.
  
-1. Options for all series in a chart are defined in the `plotOptions.series` object.
-
-2. Options for all `treemap` series are defined in `plotOptions.treemap`.
-
-3. Options for one single series are given in `the series instance array`.
+ Configuration options for the series are given in three levels:
  
-<pre>
+ 1. Options for all series in a chart are defined in the `plotOptions.series` object.
+ 
+ 2. Options for all `treemap` series are defined in `plotOptions.treemap`.
+ 
+ 3. Options for one single series are given in `the series instance array`.
+ 
+ <pre>
  Highcharts.chart('container', {
     plotOptions: {
         series: {
@@ -38,38 +39,18 @@ Configuration options for the series are given in three levels:
         type: 'treemap'
     }]
  });
-<pre>
-*/
+ <pre>
+ */
 @interface HITreemap: HISeries
 
 /**
-When using automatic point colors pulled from the `options.colors` collection, this option determines whether the chart should receive one color per series or one color per point.
-
-**Defaults to** `false`.
-*/
-@property(nonatomic, readwrite) NSNumber /* Bool */ *colorByPoint;
-/**
-The opacity of a point in treemap. When a point has children, the visibility of the children is determined by the opacity.
-
-**Defaults to** `0.15`.
-*/
-@property(nonatomic, readwrite) NSNumber *opacity;
-/**
 Whether to ignore hidden points when the layout algorithm runs. If `false`, hidden points will leave open spaces.
-
-**Defaults to** `true`.
 */
 @property(nonatomic, readwrite) NSNumber /* Bool */ *ignoreHiddenPoint;
 /**
-When enabled the user can click on a point which is a parent and zoom in on its children.
-
-**Defaults to** `false`.
-
-**Try it**
-
-* [Enabled](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/treemap-allowdrilltonode/)
+A series specific or series type specific color set to apply instead of the global `colors` when `colorByPoint` is true.
 */
-@property(nonatomic, readwrite) NSNumber /* Bool */ *allowDrillToNode;
+@property(nonatomic, readwrite) NSArray<HIColor *> *colors;
 /**
 The sort index of the point inside the treemap level.
 
@@ -79,45 +60,21 @@ The sort index of the point inside the treemap level.
 */
 @property(nonatomic, readwrite) NSNumber *sortIndex;
 /**
-This option decides if the user can interact with the parent nodes or just the leaf nodes. When this option is undefined, it will be true by default. However when allowDrillToNode is true, then it will be false by default.
+When using automatic point colors pulled from the `options.colors` collection, this option determines whether the chart should receive one color per series or one color per point.
+*/
+@property(nonatomic, readwrite) NSNumber /* Bool */ *colorByPoint;
+/**
+When enabled the user can click on a point which is a parent and zoom in on its children.
 
 **Try it**
 
-* [False](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/treemap-interactbyleaf-false/)
-* [InteractByLeaf and allowDrillToNode is true](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/treemap-interactbyleaf-true-and-allowdrilltonode/)
+* [Enabled](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/treemap-allowtraversingtree/)
 */
-@property(nonatomic, readwrite) NSNumber /* Bool */ *interactByLeaf;
+@property(nonatomic, readwrite) NSNumber /* Bool */ *allowTraversingTree;
 /**
-A series specific or series type specific color set to apply instead of the global `colors` when `colorByPoint` is true.
-*/
-@property(nonatomic, readwrite) NSArray<HIColor *> *colors;
-/**
-This option decides which algorithm is used for setting position and dimensions of the points. Can be one of `sliceAndDice`, `stripes`, `squarified` or `strip`.
-
-**Accepted values:** `["sliceAndDice", "stripes", "squarified", "strip"]`.
-
-**Defaults to** `sliceAndDice`.
-
-**Try it**
-
-* [SliceAndDice by default](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/treemap-layoutalgorithm-sliceanddice/)
-* [Stripes](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/treemap-layoutalgorithm-stripes/)
-* [Squarified](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/treemap-layoutalgorithm-squarified/)
-* [Strip](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/treemap-layoutalgorithm-strip/)
-*/
-@property(nonatomic, readwrite) NSString *layoutAlgorithm;
-/**
-Used together with the levels and allowDrillToNode options. When set to false the first level visible when drilling is considered to be level one. Otherwise the level will be the same as the tree structure.
-
-**Defaults to** `true`.
-*/
-@property(nonatomic, readwrite) NSNumber /* Bool */ *levelIsConstant;
-/**
-Defines which direction the layout algorithm will start drawing. Possible values are "vertical" and "horizontal".
+Defines which direction the layout algorithm will start drawing.
 
 **Accepted values:** `["vertical", "horizontal"]`.
-
-**Defaults to** `vertical`.
 */
 @property(nonatomic, readwrite) NSString *layoutStartingDirection;
 /**
@@ -130,19 +87,53 @@ Set options on specific levels. Takes precedence over series options, but not po
 */
 @property(nonatomic, readwrite) NSArray <HILevels *> *levels;
 /**
-Options for the button appearing when drilling down in a treemap.
+This option decides if the user can interact with the parent nodes or just the leaf nodes. When this option is undefined, it will be true by default. However when allowTraversingTree is true, then it will be false by default.
+
+**Try it**
+
+* [False](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/treemap-interactbyleaf-false/)
+* [InteractByLeaf and allowTraversingTree is true](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/treemap-interactbyleaf-true-and-allowtraversingtree/)
 */
-@property(nonatomic, readwrite) HIDrillUpButton *drillUpButton;
+@property(nonatomic, readwrite) NSNumber /* Bool */ *interactByLeaf;
 /**
 Enabling this option will make the treemap alternate the drawing direction between vertical and horizontal. The next levels starting direction will always be the opposite of the previous.
-
-**Defaults to** `false`.
 
 **Try it**
 
 * [Enabled](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/treemap-alternatestartingdirection-true/)
 */
 @property(nonatomic, readwrite) NSNumber /* Bool */ *alternateStartingDirection;
+/**
+Options for the button appearing when traversing down in a treemap.
+*/
+@property(nonatomic, readwrite) HITraverseUpButton *traverseUpButton;
+/**
+This option decides which algorithm is used for setting position and dimensions of the points.
+
+**Accepted values:** `["sliceAndDice", "stripes", "squarified", "strip"]`.
+
+**Try it**
+
+* [SliceAndDice by default](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/treemap-layoutalgorithm-sliceanddice/)
+* [Stripes](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/treemap-layoutalgorithm-stripes/)
+* [Squarified](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/treemap-layoutalgorithm-squarified/)
+* [Strip](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/treemap-layoutalgorithm-strip/)
+*/
+@property(nonatomic, readwrite) NSString *layoutAlgorithm;
+/**
+Used together with the levels and allowTraversingTree options. When set to false the first level visible to be level one, which is dynamic when traversing the tree. Otherwise the level will be the same as the tree structure.
+*/
+@property(nonatomic, readwrite) NSNumber /* Bool */ *levelIsConstant;
+/**
+Options for marker clusters, the concept of sampling the data values into larger blocks in order to ease readability and increase performance of the JavaScript charts. Note: marker clusters module is not working with `boost` and `draggable-points` modules. The marker clusters feature requires the marker-clusters.js file to be loaded, found in the modules directory of the download package, or online at `https://code.highcharts.com/modules/marker-clusters.js`.
+
+**Try it**
+
+* [Maps marker clusters](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/maps/marker-clusters/europe)
+* [Scatter marker clusters](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/marker-clusters/basic)
+* [Marker clusters with colorAxis](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/maps/marker-clusters/optimized-kmeans)
+*/
+@property(nonatomic, readwrite) HICluster *cluster;
 
 -(NSDictionary *)getParams;
 

@@ -1,5 +1,5 @@
 /**
-* (c) 2009-2018 Highsoft AS
+* (c) 2009-2020 Highsoft AS
 *
 * License: www.highcharts.com/license
 * For commercial usage, a valid license is required. To purchase a license for Highcharts iOS, please see our website: https://shop.highsoft.com/
@@ -11,17 +11,17 @@
 
 
 /**
-A `variwide` series. If the `type` option is not specified, it is inherited from `chart.type`.
-
-Configuration options for the series are given in three levels:
+ A `variwide` series. If the `type` option is not specified, it is inherited from `chart.type`.
  
-1. Options for all series in a chart are defined in the `plotOptions.series` object.
-
-2. Options for all `variwide` series are defined in `plotOptions.variwide`.
-
-3. Options for one single series are given in `the series instance array`.
+ Configuration options for the series are given in three levels:
  
-<pre>
+ 1. Options for all series in a chart are defined in the `plotOptions.series` object.
+ 
+ 2. Options for all `variwide` series are defined in `plotOptions.variwide`.
+ 
+ 3. Options for one single series are given in `the series instance array`.
+ 
+ <pre>
  Highcharts.chart('container', {
     plotOptions: {
         series: {
@@ -36,8 +36,8 @@ Configuration options for the series are given in three levels:
         type: 'variwide'
     }]
  });
-<pre>
-*/
+ <pre>
+ */
 @interface HIVariwide: HISeries
 
 /**
@@ -62,15 +62,13 @@ In a variwide chart, the group padding is 0 in order to express the horizontal s
 /**
 The corner radius of the border surrounding each column or bar.
 
-**Defaults to** `0`.
-
 **Try it**
 
 * [Rounded columns](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/column-borderradius/)
 */
 @property(nonatomic, readwrite) NSNumber *borderRadius;
 /**
-The X axis range that each point is valid for. This determines the width of the column. On a categorized axis, the range will be 1 by default (one category unit). On linear and datetime axes, the range will be computed as the distance between the two closest data points. The default `null` means it is computed automatically, but this option can be used to override the automatic value.
+The X axis range that each point is valid for. This determines the width of the column. On a categorized axis, the range will be 1 by default (one category unit). On linear and datetime axes, the range will be computed as the distance between the two closest data points. The default `null` means it is computed automatically, but this option can be used to override the automatic value. This option is set by default to 1 if data sorting is enabled.
 
 **Try it**
 
@@ -91,6 +89,40 @@ A series specific or series type specific color set to apply instead of the glob
 */
 @property(nonatomic, readwrite) NSArray<HIColor *> *colors;
 /**
+The color of the border surrounding each column or bar. In styled mode, the border stroke can be set with the `.highcharts-point` rule.
+
+**Defaults to** `#ffffff`.
+
+**Try it**
+
+* [Dark gray border](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/column-bordercolor/)
+*/
+@property(nonatomic, readwrite) HIColor *borderColor;
+/**
+When `true`, the columns will center in the category, ignoring null or missing points. When `false`, space will be reserved for null or missing points.
+
+**Try it**
+
+* [Center in category](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/series-column/centerincategory/)
+*/
+@property(nonatomic, readwrite) NSNumber /* Bool */ *centerInCategory;
+/**
+The maximum allowed pixel width for a column, translated to the height of a bar in a bar chart. This prevents the columns from becoming too wide when there is a small number of points in the chart.
+
+**Try it**
+
+* [Limited to 50](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/column-maxpointwidth-20/)
+*/
+@property(nonatomic, readwrite) NSNumber *maxPointWidth;
+/**
+A pixel value specifying a fixed width for each column or bar point. When `null`, the width is calculated from the `pointPadding` and `groupPadding`. The width effects the dimension that is not based on the point value. For column series it is the hoizontal length and for bar series it is the vertical length.
+
+**Try it**
+
+* [20px wide columns regardless of chart width or the amount of data points](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/column-pointwidth-20/)
+*/
+@property(nonatomic, readwrite) NSNumber *pointWidth;
+/**
 When using automatic point colors pulled from the global `colors` or series-specific `plotOptions.column.colors` collections, this option determines whether the chart should receive one color per series or one color per point. In styled mode, the `colors` or `series.colors` arrays are not supported, and instead this option gives the points individual color class names on the form `highcharts-color-{n}`.
 
 **Defaults to** `false`.
@@ -102,25 +134,15 @@ When using automatic point colors pulled from the global `colors` or series-spec
 */
 @property(nonatomic, readwrite) NSNumber /* Bool */ *colorByPoint;
 /**
-The maximum allowed pixel width for a column, translated to the height of a bar in a bar chart. This prevents the columns from becoming too wide when there is a small number of points in the chart.
+The width of the border surrounding each column or bar. Defaults to `1` when there is room for a border, but to `0` when the columns are so dense that a border would cover the next column. In styled mode, the stroke width can be set with the `.highcharts-point` rule.
 
-**Defaults to** `null`.
-
-**Try it**
-
-* [Limited to 50](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/column-maxpointwidth-20/)
-*/
-@property(nonatomic, readwrite) NSNumber *maxPointWidth;
-/**
-A pixel value specifying a fixed width for each column or bar. When `null`, the width is calculated from the `pointPadding` and `groupPadding`.
-
-**Defaults to** `null`.
+**Defaults to** `undefined`.
 
 **Try it**
 
-* [20px wide columns regardless of chart width or the amount of data points](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/column-pointwidth-20/)
+* [2px black border](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/column-borderwidth/)
 */
-@property(nonatomic, readwrite) NSNumber *pointWidth;
+@property(nonatomic, readwrite) NSNumber *borderWidth;
 /**
 Whether to group non-stacked columns or to let them render independent of each other. Non-grouped columns will be laid out individually and overlap each other.
 

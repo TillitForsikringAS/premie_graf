@@ -1,5 +1,5 @@
 /**
- * (c) 2009-2018 Highsoft AS
+ * (c) 2009-2020 Highsoft AS
  *
  * License: www.highcharts.com/license
  * For commercial usage, a valid license is required. To purchase a license for Highcharts iOS, please see our website: https://shop.highsoft.com/
@@ -7,7 +7,7 @@
  */
 
 @import UIKit;
-#import "HIChartsJSONSerializable.h"
+#import "HIPatternObject.h"
 
 /**
  *  This class provides color management in the chart.
@@ -48,6 +48,11 @@
  * Init with UIKit's UIColor
  */
 - (instancetype)initWithUIColor: (UIColor *) color;
+
+/**
+ * Pattern fill
+ */
+- (instancetype)initWithPattern: (HIPatternObject *) pattern;
 
 -(id)getData;
 

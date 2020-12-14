@@ -1,5 +1,5 @@
 /**
-* (c) 2009-2018 Highsoft AS
+* (c) 2009-2020 Highsoft AS
 *
 * License: www.highcharts.com/license
 * For commercial usage, a valid license is required. To purchase a license for Highcharts iOS, please see our website: https://shop.highsoft.com/
@@ -7,6 +7,8 @@
 */
 
 #import "HIColorVariation.h"
+#import "HIDataLabels.h"
+#import "HIStates.h"
 #import "HIColor.h"
 
 
@@ -40,9 +42,9 @@ Can set a `color` on all points which lies on the same level.
 */
 @property(nonatomic, readwrite) HIColor *color;
 /**
-Can set a `dataLabels` on all points which lies on the same level.
+Can set `dataLabels` on all points which lies on the same level.
 */
-@property(nonatomic, readwrite) id dataLabels;
+@property(nonatomic, readwrite) HIDataLabels *dataLabels;
 /**
 Can set a `rotationMode` on all points which lies on the same level.
 */
@@ -75,6 +77,22 @@ Can set the layoutStartingDirection option on a specific level.
 **Accepted values:** `["vertical", "horizontal"]`.
 */
 @property(nonatomic, readwrite) NSString *layoutStartingDirection;
+/**
+Can set `colorByPoint` on all nodes which lay on the same level.
+
+**Defaults to** `true`.
+*/
+@property(nonatomic, readwrite) NSNumber /* Bool */ *colorByPoint;
+/**
+Can set `states` on all nodes and points which lay on the same level.
+*/
+@property(nonatomic, readwrite) HIStates *states;
+/**
+Can set `linkOpacity` on all points which lay on the same level.
+
+**Defaults to** `0.5`.
+*/
+@property(nonatomic, readwrite) NSNumber *linkOpacity;
 
 -(NSDictionary *)getParams;
 

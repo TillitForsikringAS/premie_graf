@@ -1,5 +1,5 @@
 /**
-* (c) 2009-2018 Highsoft AS
+* (c) 2009-2020 Highsoft AS
 *
 * License: www.highcharts.com/license
 * For commercial usage, a valid license is required. To purchase a license for Highcharts iOS, please see our website: https://shop.highsoft.com/
@@ -7,11 +7,17 @@
 */
 
 #import "HILabel.h"
+#import "HIEvents.h"
 #import "HIColor.h"
 
 
 /**
-An array of objects representing plot lines on the X axis
+An array of lines stretching across the plot area, marking a specific value on one of the axes. In styled mode, the plot lines are styled by the `.highcharts-plot-line` class in addition to the `className` option.
+
+**Try it**
+
+* [Basic plot line](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/xaxis/plotlines-color/)
+* [Solid gauge plot line](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/series-solidgauge/labels-auto-aligned/)
 */
 @interface HIPlotLines: HIChartsJSONSerializable
 
@@ -28,10 +34,6 @@ The z index of the plot line within the chart.
 /**
 The dashing or dot style for the plot line. For possible values see [this overview](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/plotoptions/series-dashstyle-all/).
 
-**Accepted values:** `["Solid", "ShortDash", "ShortDot", "ShortDashDot",
-            "ShortDashDotDot", "Dot", "Dash" ,"LongDash", "DashDot",
-            "LongDashDot", "LongDashDotDot"]`.
-
 **Defaults to** `Solid`.
 
 **Try it**
@@ -42,11 +44,17 @@ The dashing or dot style for the plot line. For possible values see [this overvi
 /**
 The color of the line.
 
+**Defaults to** `#999999`.
+
 **Try it**
 
 * [A red line from X axis](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/xaxis/plotlines-color/)
 */
 @property(nonatomic, readwrite) HIColor *color;
+/**
+Text labels for the plot bands
+*/
+@property(nonatomic, readwrite) HILabel *label;
 /**
 The position of the line in axis units.
 
@@ -56,13 +64,13 @@ The position of the line in axis units.
 */
 @property(nonatomic, readwrite) NSNumber *value;
 /**
-An id used for identifying the plot line in Axis.removePlotLine.
+An object defining mouse events for the plot line. Supported properties are `click`, `mouseover`, `mouseout`, `mousemove`.
 
 **Try it**
 
-* [Remove plot line by id](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/xaxis/plotlines-id/)
+* [Mouse events demonstrated](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/xaxis/plotlines-events/)
 */
-@property(nonatomic, readwrite) NSString *id;
+@property(nonatomic, readwrite) HIEvents *events;
 /**
 A custom class name, in addition to the default `highcharts-plot-line`, to apply to each individual line.
 */
@@ -70,24 +78,27 @@ A custom class name, in addition to the default `highcharts-plot-line`, to apply
 /**
 The width or thickness of the plot line.
 
+**Defaults to** `2`.
+
 **Try it**
 
 * [2px wide line from X axis](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/xaxis/plotlines-color/)
 */
 @property(nonatomic, readwrite) NSNumber *width;
 /**
-Text labels for the plot bands
-*/
-@property(nonatomic, readwrite) HILabel *label;
-/**
-An object defining mouse events for the plot line. Supported properties are `click`, `mouseover`, `mouseout`, `mousemove`.
+An id used for identifying the plot line in Axis.removePlotLine.
 
 **Try it**
 
-* [Mouse events demonstrated](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/xaxis/plotlines-events/)
+* [Remove plot line by id](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/xaxis/plotlines-id/)
 */
-@property(nonatomic, readwrite) id events;
+@property(nonatomic, readwrite) NSString *id;
 
 -(NSDictionary *)getParams;
+
+/**
+ Remove the plot line.
+ */
+-(void)destroy;
 
 @end

@@ -1,5 +1,5 @@
 /**
-* (c) 2009-2018 Highsoft AS
+* (c) 2009-2020 Highsoft AS
 *
 * License: www.highcharts.com/license
 * For commercial usage, a valid license is required. To purchase a license for Highcharts iOS, please see our website: https://shop.highsoft.com/
@@ -28,11 +28,7 @@ The Z index of the crosshair. Higher Z indices allow drawing the crosshair on to
 */
 @property(nonatomic, readwrite) NSNumber *zIndex;
 /**
-The dash style for the crosshair. See `series.dashStyle` for possible values.
-
-**Accepted values:** `["Solid", "ShortDash", "ShortDot", "ShortDashDot",
-            "ShortDashDotDot", "Dot", "Dash" ,"LongDash", "DashDot",
-            "LongDashDot", "LongDashDotDot"]`.
+The dash style for the crosshair. See `plotOptions.series.dashStyle` for possible values.
 
 **Defaults to** `Solid`.
 

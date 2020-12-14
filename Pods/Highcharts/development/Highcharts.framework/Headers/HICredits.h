@@ -1,13 +1,13 @@
 /**
-* (c) 2009-2018 Highsoft AS
+* (c) 2009-2020 Highsoft AS
 *
 * License: www.highcharts.com/license
 * For commercial usage, a valid license is required. To purchase a license for Highcharts iOS, please see our website: https://shop.highsoft.com/
 * In case of questions, please contact sales@highsoft.com
 */
 
-#import "HIStyle.h"
-#import "HIPosition.h"
+#import "HIAlignObject.h"
+#import "HICSSObject.h"
 
 
 /**
@@ -17,14 +17,10 @@ Highchart by default puts a credits label in the lower right corner of the chart
 
 /**
 CSS styles for the credits label.
-
-**Defaults to** `{"cursor": "pointer", "color": "#999999", "fontSize": "10px"}`.
 */
-@property(nonatomic, readwrite) HIStyle *style;
+@property(nonatomic, readwrite) HICSSObject *style;
 /**
 The text for the credits label.
-
-**Defaults to** `Highcharts.com`.
 
 **Try it**
 
@@ -55,7 +51,7 @@ Position configuration for the credits label.
 * [Left aligned](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/credits/position-left/)
 * [Left aligned](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/credits/position-left/)
 */
-@property(nonatomic, readwrite) HIPosition *position;
+@property(nonatomic, readwrite) HIAlignObject *position;
 
 -(NSDictionary *)getParams;
 

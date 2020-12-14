@@ -1,17 +1,17 @@
 /**
-* (c) 2009-2018 Highsoft AS
+* (c) 2009-2020 Highsoft AS
 *
 * License: www.highcharts.com/license
 * For commercial usage, a valid license is required. To purchase a license for Highcharts iOS, please see our website: https://shop.highsoft.com/
 * In case of questions, please contact sales@highsoft.com
 */
 
-#import "HIChartsJSONSerializable.h"
+#import "HIAnnotations.h"
 #import "HIFunction.h"
 
 
 /**
-Options for exporting data to CSV or ExCel, or displaying the data in a HTML table or a JavaScript structure. Requires the `export-data.js` module. This module adds data export options to the export menu and provides functions like `Chart.getCSV`, `Chart.getTable`, `Chart.getDataRows` and `Chart.viewData`. The XLS converter is limited and only creates a HTML string that is passed for download, which works but creates a warning before opening. The workaround for this is to use a third party XLSX converter, as demonstrated in the sample below.
+Options for exporting data to CSV or ExCel, or displaying the data in a HTML table or a JavaScript structure. This module adds data export options to the export menu and provides functions like `Chart.getCSV`, `Chart.getTable`, `Chart.getDataRows` and `Chart.viewData`. The XLS converter is limited and only creates a HTML string that is passed for download, which works but creates a warning before opening. The workaround for this is to use a third party XLSX converter, as demonstrated in the sample below.
 
 **Try it**
 
@@ -30,14 +30,6 @@ Formatter callback for the column headers. Parameters are: - `item` - The series
 */
 @property(nonatomic, readwrite) HIFunction *columnHeaderFormatter;
 /**
-Which decimal point to use for exported CSV. Defaults to the same as the browser locale, typically `.` (English) or `,` (German, French etc).
-*/
-@property(nonatomic, readwrite) NSString *decimalPoint;
-/**
-The line delimiter in the exported data, defaults to a newline.
-*/
-@property(nonatomic, readwrite) NSString *lineDelimiter;
-/**
 The item delimiter in the exported data. Use `;` for direct exporting to Excel. Defaults to a best guess based on the browser locale. If the locale _decimal point_ is `,`, the `itemDelimiter` defaults to `;`, otherwise the `itemDelimiter` defaults to `,`.
 */
 @property(nonatomic, readwrite) NSString *itemDelimiter;
@@ -45,6 +37,18 @@ The item delimiter in the exported data. Use `;` for direct exporting to Excel. 
 Which date format to use for exported dates on a datetime X axis. See `Highcharts.dateFormat`.
 */
 @property(nonatomic, readwrite) NSString *dateFormat;
+/**
+The line delimiter in the exported data, defaults to a newline.
+*/
+@property(nonatomic, readwrite) NSString *lineDelimiter;
+/**
+Which decimal point to use for exported CSV. Defaults to the same as the browser locale, typically `.` (English) or `,` (German, French etc).
+*/
+@property(nonatomic, readwrite) NSString *decimalPoint;
+/**
+Options for annotations in the export-data table.
+*/
+@property(nonatomic, readwrite) HIAnnotations *annotations;
 
 -(NSDictionary *)getParams;
 

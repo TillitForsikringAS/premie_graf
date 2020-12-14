@@ -1,5 +1,5 @@
 /**
-* (c) 2009-2018 Highsoft AS
+* (c) 2009-2020 Highsoft AS
 *
 * License: www.highcharts.com/license
 * For commercial usage, a valid license is required. To purchase a license for Highcharts iOS, please see our website: https://shop.highsoft.com/
@@ -27,7 +27,7 @@ The smallest degree of rotation for a word.
 */
 @property(nonatomic, readwrite) NSNumber *from;
 /**
-The number of possible orientations for a word, within the range of `rotation.from` and `rotation.to`.
+The number of possible orientations for a word, within the range of `rotation.from` and `rotation.to`. Must be a number larger than 0.
 */
 @property(nonatomic, readwrite) NSNumber *orientations;
 

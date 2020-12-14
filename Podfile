@@ -1,6 +1,6 @@
 target 'Premie_graf' do
   use_frameworks!
 
-pod 'Highcharts', '~> 6.1.0'
+pod 'Highcharts', '~> 8.2.2'
 
 end

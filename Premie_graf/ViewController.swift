@@ -145,17 +145,17 @@ class ViewController: UIViewController {
         // Dynamic range
         let dynamic_range = HIArearange()
         dynamic_range.name = "dynamic_range"
-        dynamic_range.lineWidth = 0
+        dynamic_range.lineWidth = 4
         dynamic_range.data = [
             [period_start, premium_current, premium_current], // This period (10/28/2020)
             [next_30_days, premium_next_low, premium_next_high], // Next 30 days (11/27/2020)
             [next_60_days, premium_next_low, premium_next_high] // Next 60 days (12/27/2020)
         ]
-        dynamic_range.dataLabels = HIDataLabels()
-        dynamic_range.dataLabels.xHigh = 20
-        dynamic_range.dataLabels.xLow = 20
-        dynamic_range.dataLabels.yHigh = 45
-        dynamic_range.dataLabels.yLow = -45
+        dynamic_range.dataLabels = [HIDataLabels()]
+        dynamic_range.dataLabels[0].xHigh = 20
+        dynamic_range.dataLabels[0].xLow = 20
+        dynamic_range.dataLabels[0].yHigh = 45
+        dynamic_range.dataLabels[0].yLow = -45
         
         dynamic_range.color = HIColor(hexValue: "ECECEC")
         dynamic_range.fillColor = HIColor(hexValue: "ECECEC")
@@ -236,7 +236,7 @@ class ViewController: UIViewController {
         plotLine.label.rotation = 0
         plotLine.label.align = "center"
         plotLine.label.x = 0
-        plotLine.label.style = HIStyle()
+        plotLine.label.style = HICSSObject()
         plotLine.label.useHTML = true
         plotLine.label.style.backgroundColor = "#F8F8F8"
         
@@ -260,23 +260,27 @@ class ViewController: UIViewController {
         plotOptions.line.step = "left"
         
         plotOptions.series = HISeries()
-        plotOptions.series.dataLabels = HIDataLabels()
-        plotOptions.series.dataLabels.enabled = true
-        plotOptions.series.dataLabels.zIndex = 10
-        plotOptions.series.dataLabels.x = 30
+        plotOptions.series.dataLabels = [HIDataLabels()]
+        plotOptions.series.dataLabels[0].enabled = true
+        plotOptions.series.dataLabels[0].zIndex = 10
+        plotOptions.series.dataLabels[0].x = 30
         
         plotOptions.series.lineWidth = 2
         plotOptions.series.marker = HIMarker()
         plotOptions.series.marker.enabled = false
         
-        plotOptions.series.dataLabels.color = HIColor(hexValue: "000000")
-        plotOptions.series.dataLabels.style = HIStyle()
-        plotOptions.series.dataLabels.style.fontSize = "14px"
-        plotOptions.series.dataLabels.style.fontWeight = "normal"
-        plotOptions.series.dataLabels.allowOverlap = true
-        plotOptions.series.dataLabels.useHTML = true
+        plotOptions.series.states = HIStates()
+        plotOptions.series.states.hover = HIHover()
+        plotOptions.series.states.hover.enabled = false
         
-        plotOptions.series.dataLabels.formatter = HIFunction(jsFunction:
+        plotOptions.series.dataLabels[0].color = HIColor(hexValue: "000000")
+        plotOptions.series.dataLabels[0].style = HICSSObject()
+        plotOptions.series.dataLabels[0].style.fontSize = "14px"
+        plotOptions.series.dataLabels[0].style.fontWeight = "normal"
+        plotOptions.series.dataLabels[0].allowOverlap = true
+        plotOptions.series.dataLabels[0].useHTML = true
+        
+        plotOptions.series.dataLabels[0].formatter = HIFunction(jsFunction:
             "function () {"
                 + "if(this.series.name == 'dynamic_line'){"
                     + "if(this.point.index < this.series.yData.length - 2){"
@@ -297,7 +301,7 @@ class ViewController: UIViewController {
         )
         
         let plotOptions2 = plotOptions.copy() as! HIPlotOptions
-        plotOptions2.series.dataLabels.formatter = HIFunction(jsFunction:
+        plotOptions2.series.dataLabels[0].formatter = HIFunction(jsFunction:
             "function () {"
                 + "if(this.series.name == 'static_line'){"
                     + "if(this.point.index < this.series.yData.length - 3 || this.point.index == this.series.yData.length - 2){"
@@ -311,7 +315,7 @@ class ViewController: UIViewController {
             + "}"
         )
         
-        plotOptions.series.animation = HIAnimation()
+        plotOptions.series.animation = HIAnimationOptionsObject()
         plotOptions.series.animation.duration = 0
         
         options.plotOptions = plotOptions

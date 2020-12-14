@@ -1,12 +1,12 @@
 /**
-* (c) 2009-2018 Highsoft AS
+* (c) 2009-2020 Highsoft AS
 *
 * License: www.highcharts.com/license
 * For commercial usage, a valid license is required. To purchase a license for Highcharts iOS, please see our website: https://shop.highsoft.com/
 * In case of questions, please contact sales@highsoft.com
 */
 
-#import "HIChartsJSONSerializable.h"
+#import "HICSSObject.h"
 
 
 /**
@@ -24,11 +24,9 @@ CSS styles for the title. In styled mode, the subtitle style is given in the `.h
 * [Custom color and weight](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/subtitle/style/)
 * [Styled mode](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/css/titles/)
 */
-@property(nonatomic, readwrite) NSDictionary /* <NSString, NSString> */ *style;
+@property(nonatomic, readwrite) HICSSObject *style;
 /**
-The vertical alignment of the title. Can be one of "top", "middle" and "bottom". When a value is given, the title behaves as floating.
-
-**Accepted values:** `["top", "middle", "bottom"]`.
+The vertical alignment of the title. Can be one of `"top"`, `"middle"` and `"bottom"`. When middle, the subtitle behaves as floating.
 
 **Try it**
 
@@ -47,19 +45,11 @@ The subtitle of the chart.
 /**
 The horizontal alignment of the subtitle. Can be one of "left", "center" and "right".
 
-**Accepted values:** `["left", "center", "right"]`.
-
 **Try it**
 
 * [Footnote at right of plot area](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/subtitle/align/)
 */
 @property(nonatomic, readwrite) NSString *align;
-/**
-Whether to [use HTML](https://www.highcharts.com/docs/chart-concepts/labels-and-string-formatting#html) to render the text.
-
-**Defaults to** `false`.
-*/
-@property(nonatomic, readwrite) NSNumber /* Bool */ *useHTML;
 /**
 The y position of the subtitle relative to the alignment within `chart.spacingTop` and `chart.spacingBottom`. By default the subtitle is laid out below the title unless the title is floating.
 
@@ -79,14 +69,6 @@ The x position of the subtitle relative to the alignment within `chart.spacingLe
 */
 @property(nonatomic, readwrite) NSNumber *x;
 /**
-Adjustment made to the subtitle width, normally to reserve space for the exporting burger menu.
-
-**Try it**
-
-* [Wider menu, greater padding](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/title/widthadjust/)
-*/
-@property(nonatomic, readwrite) NSNumber *widthAdjust;
-/**
 When the subtitle is floating, the plot area will not move to make space for it.
 
 **Defaults to** `false`.
@@ -96,6 +78,20 @@ When the subtitle is floating, the plot area will not move to make space for it.
 * [Floating title and subtitle](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/subtitle/floating/)
 */
 @property(nonatomic, readwrite) NSNumber /* Bool */ *floating;
+/**
+Adjustment made to the subtitle width, normally to reserve space for the exporting burger menu.
+
+**Try it**
+
+* [Wider menu, greater padding](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/title/widthadjust/)
+*/
+@property(nonatomic, readwrite) NSNumber *widthAdjust;
+/**
+Whether to [use HTML](https://www.highcharts.com/docs/chart-concepts/labels-and-string-formatting#html) to render the text.
+
+**Defaults to** `false`.
+*/
+@property(nonatomic, readwrite) NSNumber /* Bool */ *useHTML;
 
 -(NSDictionary *)getParams;
 

@@ -1,5 +1,5 @@
 /**
-* (c) 2009-2018 Highsoft AS
+* (c) 2009-2020 Highsoft AS
 *
 * License: www.highcharts.com/license
 * For commercial usage, a valid license is required. To purchase a license for Highcharts iOS, please see our website: https://shop.highsoft.com/
@@ -11,7 +11,6 @@
 #import "HITop.h"
 #import "HIBack.h"
 #import "HIFront.h"
-#import "HISide.h"
 #import "HILeft.h"
 
 
@@ -48,10 +47,6 @@ The front of the frame around a 3D chart.
 General pixel thickness for the frame faces.
 */
 @property(nonatomic, readwrite) NSNumber *size;
-/**
-Note: As of v5.0.12, `frame.left` or `frame.right` should be used instead. The side for the frame around a 3D chart.
-*/
-@property(nonatomic, readwrite) HISide *side;
 /**
 The left side of the frame around a 3D chart.
 */

@@ -1,5 +1,5 @@
 /**
-* (c) 2009-2018 Highsoft AS
+* (c) 2009-2020 Highsoft AS
 *
 * License: www.highcharts.com/license
 * For commercial usage, a valid license is required. To purchase a license for Highcharts iOS, please see our website: https://shop.highsoft.com/
@@ -31,7 +31,7 @@ A full set of chart options to apply as overrides to the general chart options. 
 * [Legend](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/responsive/legend/)
 * [Class name](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/responsive/classname/)
 */
-@property(nonatomic, readwrite) id chartOptions;
+@property(nonatomic, readwrite) NSDictionary *chartOptions;
 
 -(NSDictionary *)getParams;
 

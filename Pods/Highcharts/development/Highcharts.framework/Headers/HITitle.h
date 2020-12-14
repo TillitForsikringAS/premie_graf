@@ -1,12 +1,12 @@
 /**
-* (c) 2009-2018 Highsoft AS
+* (c) 2009-2020 Highsoft AS
 *
 * License: www.highcharts.com/license
 * For commercial usage, a valid license is required. To purchase a license for Highcharts iOS, please see our website: https://shop.highsoft.com/
 * In case of questions, please contact sales@highsoft.com
 */
 
-#import "HIStyle.h"
+#import "HICSSObject.h"
 
 
 /**
@@ -14,6 +14,13 @@ The chart's main title.
 */
 @interface HITitle: HIChartsJSONSerializable
 
+/**
+Adjustment made to the title width, normally to reserve space for the exporting burger menu.
+
+**Try it**
+
+* [Wider menu, greater padding](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/title/widthadjust/)
+*/
 @property(nonatomic, readwrite) NSNumber *widthAdjust;
 /**
 CSS styles for the title. Use this for font styling, but use `align`, `x` and `y` for text alignment. In styled mode, the title style is given in the `.highcharts-title` class.
@@ -25,11 +32,9 @@ CSS styles for the title. Use this for font styling, but use `align`, `x` and `y
 * [Custom color and weight](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/title/style/)
 * [Styled mode](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/css/titles/)
 */
-@property(nonatomic, readwrite) HIStyle *style;
+@property(nonatomic, readwrite) HICSSObject *style;
 /**
 The vertical alignment of the title. Can be one of `"top"`, `"middle"` and `"bottom"`. When a value is given, the title behaves as if `floating` were `true`.
-
-**Accepted values:** `["top", "middle", "bottom"]`.
 
 **Try it**
 
@@ -48,10 +53,6 @@ The title of the chart. To disable the title, set the `text` to `undefined`.
 @property(nonatomic, readwrite) NSString *text;
 /**
 The horizontal alignment of the title. Can be one of "left", "center" and "right".
-
-**Accepted values:** `["left", "center", "right"]`.
-
-**Defaults to** `center`.
 
 **Try it**
 
@@ -88,13 +89,12 @@ When the title is floating, the plot area will not move to make space for it.
 */
 @property(nonatomic, readwrite) NSNumber /* Bool */ *floating;
 /**
-Adjustment made to the title width, normally to reserve space for the exporting burger menu.
-
-**Defaults to** `-44`.
+The margin between the title and the plot area, or if a subtitle is present, the margin between the subtitle and the plot area.
 
 **Try it**
 
-* [Wider menu, greater padding](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/title/widthadjust/)
+* [A chart title margin of 50](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/title/margin-50/)
+* [The same margin applied with a subtitle](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/title/margin-subtitle/)
 */
 @property(nonatomic, readwrite) NSNumber *margin;
 /**
@@ -105,8 +105,6 @@ Whether to [use HTML](https://www.highcharts.com/docs/chart-concepts/labels-and-
 @property(nonatomic, readwrite) NSNumber /* Bool */ *useHTML;
 /**
 The rotation of the text in degrees. 0 is horizontal, 270 is vertical reading from bottom to top.
-
-**Defaults to** `270`.
 
 **Try it**
 
@@ -122,17 +120,13 @@ Whether to reserve space for the title when laying out the axis.
 /**
 If enabled, the axis title will skewed to follow the perspective. This will fix overlapping labels and titles, but texts become less legible due to the distortion. The final appearance depends heavily on `title.position3d`. A `null` value will use the config from `labels.skew3d`.
 
-**Accepted values:** `[false, true, null]`.
-
 **Try it**
 
 * [Skewed labels](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/3d/skewed-labels/)
 */
 @property(nonatomic, readwrite) NSNumber /* Bool */ *skew3d;
 /**
-Defines how the title is repositioned according to the 3D chart orientation. - `'offset'`: Maintain a fixed horizontal/vertical distance from the  tick marks, despite the chart orientation. This is the backwards  compatible behavior, and causes skewing of X and Z axes. - `'chart'`: Preserve 3D position relative to the chart. This looks nice, but hard to read if the text isn't  forward-facing. - `'flap'`: Rotated text along the axis to compensate for the chart  orientation. This tries to maintain text as legible as possible on  all orientations. - `'ortho'`: Rotated text along the axis direction so that the labels  are orthogonal to the axis. This is very similar to `'flap'`, but  prevents skewing the labels (X and Y scaling are still present). - `null`: Will use the config from `labels.position3d`
-
-**Accepted values:** `['offset', 'chart', 'flap', 'ortho', null]`.
+Defines how the title is repositioned according to the 3D chart orientation. - `'offset'`: Maintain a fixed horizontal/vertical distance from  the tick marks, despite the chart orientation. This is the  backwards compatible behavior, and causes skewing of X and Z  axes. - `'chart'`: Preserve 3D position relative to the chart. This  looks nice, but hard to read if the text isn't forward-facing. - `'flap'`: Rotated text along the axis to compensate for the  chart orientation. This tries to maintain text as legible as  possible on all orientations. - `'ortho'`: Rotated text along the axis direction so that the  labels are orthogonal to the axis. This is very similar to  `'flap'`, but prevents skewing the labels (X and Y scaling are  still present). - `undefined`: Will use the config from `labels.position3d`
 
 **Try it**
 

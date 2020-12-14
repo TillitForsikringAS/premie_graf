@@ -1,5 +1,5 @@
 /**
-* (c) 2009-2018 Highsoft AS
+* (c) 2009-2020 Highsoft AS
 *
 * License: www.highcharts.com/license
 * For commercial usage, a valid license is required. To purchase a license for Highcharts iOS, please see our website: https://shop.highsoft.com/
@@ -23,8 +23,6 @@ The color of the panel.
 @property(nonatomic, readwrite) HIColor *color;
 /**
 Whether to display the frame. Possible values are `true`, `false`, `"auto"` to display only the frames behind the data, and `"default"` to display faces behind the data based on the axis layout, ignoring the point of view.
-
-**Accepted values:** `["default", "auto", true, false]`.
 
 **Defaults to** `default`.
 

@@ -1,5 +1,5 @@
 /**
-* (c) 2009-2018 Highsoft AS
+* (c) 2009-2020 Highsoft AS
 *
 * License: www.highcharts.com/license
 * For commercial usage, a valid license is required. To purchase a license for Highcharts iOS, please see our website: https://shop.highsoft.com/
@@ -7,11 +7,12 @@
 */
 
 #import "HILabel.h"
+#import "HIEvents.h"
 #import "HIColor.h"
 
 
 /**
-An array of objects defining plot bands on the Y axis.
+An array of colored bands stretching across the plot area marking an interval on the axis. In styled mode, the plot bands are styled by the `.highcharts-plot-band` class in addition to the `className` option.
 */
 @interface HIPlotBands: HIChartsJSONSerializable
 
@@ -69,19 +70,13 @@ The start position of the plot band in axis units.
 /**
 The color of the plot band.
 
+**Defaults to** `#e6ebf5`.
+
 **Try it**
 
 * [Color band](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/xaxis/plotbands-color/)
 */
 @property(nonatomic, readwrite) HIColor *color;
-/**
-An id used for identifying the plot band in Axis.removePlotBand.
-
-**Try it**
-
-* [Remove plot band by id](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/xaxis/plotbands-id/)
-*/
-@property(nonatomic, readwrite) NSString *id;
 /**
 A custom class name, in addition to the default `highcharts-plot-band`, to apply to each individual band.
 */
@@ -102,6 +97,14 @@ Border width for the plot band. Also requires `borderColor` to be set.
 */
 @property(nonatomic, readwrite) NSNumber *borderWidth;
 /**
+An id used for identifying the plot band in Axis.removePlotBand.
+
+**Try it**
+
+* [Remove plot band by id](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/xaxis/plotbands-id/)
+*/
+@property(nonatomic, readwrite) NSString *id;
+/**
 Text labels for the plot bands
 */
 @property(nonatomic, readwrite) HILabel *label;
@@ -112,8 +115,13 @@ An object defining mouse events for the plot band. Supported properties are `cli
 
 * [Mouse events demonstrated](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/xaxis/plotbands-events/)
 */
-@property(nonatomic, readwrite) id events;
+@property(nonatomic, readwrite) HIEvents *events;
 
 -(NSDictionary *)getParams;
+
+/**
+ Remove the plot band.
+ */
+-(void)destroy;
 
 @end

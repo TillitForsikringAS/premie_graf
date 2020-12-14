@@ -1,5 +1,5 @@
 /**
-* (c) 2009-2018 Highsoft AS
+* (c) 2009-2020 Highsoft AS
 *
 * License: www.highcharts.com/license
 * For commercial usage, a valid license is required. To purchase a license for Highcharts iOS, please see our website: https://shop.highsoft.com/
@@ -15,6 +15,7 @@ Chart type description strings. This is added to the chart information region. I
 @interface HIChartTypes: HIChartsJSONSerializable
 
 @property(nonatomic, readwrite) NSString *scatterMultiple;
+@property(nonatomic, readwrite) NSString *boxplotSingle;
 @property(nonatomic, readwrite) NSString *defaultMultiple;
 @property(nonatomic, readwrite) NSString *mapTypeDescription;
 @property(nonatomic, readwrite) NSString *lineMultiple;
@@ -22,7 +23,6 @@ Chart type description strings. This is added to the chart information region. I
 @property(nonatomic, readwrite) NSString *emptyChart;
 @property(nonatomic, readwrite) NSString *pieMultiple;
 @property(nonatomic, readwrite) NSString *columnSingle;
-@property(nonatomic, readwrite) NSString *pieSingle;
 @property(nonatomic, readwrite) NSString *splineMultiple;
 @property(nonatomic, readwrite) NSString *unknownMap;
 @property(nonatomic, readwrite) NSString *combinationChart;
@@ -35,7 +35,7 @@ Chart type description strings. This is added to the chart information region. I
 @property(nonatomic, readwrite) NSString *lineSingle;
 @property(nonatomic, readwrite) NSString *splineSingle;
 @property(nonatomic, readwrite) NSString *bubbleSingle;
-@property(nonatomic, readwrite) NSString *boxplotSingle;
+@property(nonatomic, readwrite) NSString *pieSingle;
 
 -(NSDictionary *)getParams;
 
