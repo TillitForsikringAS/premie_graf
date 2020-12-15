@@ -308,7 +308,6 @@ class ForsikretGraf: UIViewController {
         plotLine.value = NSNumber(value: today)
         plotLine.label = HILabel()
         
-        //        xAxis.labels.formatter = HIFunction(jsFunction:"function () {return Highcharts.dateFormat('%d. %b %y', this.value);}")
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d. MMM"
         let todayFormatted = dateFormatter.string(from: Date())
